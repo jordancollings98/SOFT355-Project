@@ -36,7 +36,7 @@ passport.serializeUser(userSchema.serializeUser());
 passport.deserializeUser(userSchema.deserializeUser());
 
 var uri = "mongodb+srv://jcollings2:plymouthuniversity@uni-exercise5-ezjhs.mongodb.net/userDb?retryWrites=true&w=majority";
-mongoose.connect(uri, {useNewUrlParser: true});
+mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
 
 myApp.use(function(req, res, next) {     // Catch 404 errors and forward to the error handler
