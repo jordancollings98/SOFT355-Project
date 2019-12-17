@@ -1,0 +1,16 @@
+extends genericLayout
+html
+block content
+  .container.pageCenter
+    h1.pageTitle Login Page
+    img.userImage(src="user_image.png")
+    br
+    form(role='form',class="formCenter", action="/login",method="post")
+      .form-group
+          input.form-control(type='text', name="username", placeholder='Enter Username')
+      .form-group
+        input.form-control(type='password', name="password", placeholder='Password')
+      button.btn.btn-secondary(type='submit') Submit
+      &nbsp;
+      a(href='/')
+        button.btn.btn-danger(type="button") Cancel
