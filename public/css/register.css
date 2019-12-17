@@ -1,7 +1,21 @@
 .formCenter{margin:0 auto;max-width: 300px;}
-p.lead{text-align:center;}
-h1.registerTitle{text-align:center;}
+h1.pageTitle{text-align:center;}
 .pageCenter{margin-top:100px;padding-top:100px;margin-bottom:100px;padding-bottom:100px;background-color:AntiqueWhite; max-width: 500px;}
 .backgroundImage{background-image: url(../forest-background2.jpg);}
-.User{height:200px;width:200px;margin-left:120px;margin-bottom:15px;}
+.userImage{height:200px;width:200px;margin-left:120px;margin-bottom:15px;}
 #cancel{margin-left:5px;}
+@media screen and (max-width: 500px){
+	
+		.userImage{margin-left:90px;margin-bottom:15px;}
+	 
+}
+@media screen and (max-width: 375px){
+	
+		.userImage{margin-left:80px;margin-bottom:15px;}
+	 
+}
+@media screen and (max-width: 345px){
+	
+		.userImage{margin-left:60px;margin-bottom:15px;}
+	 
+}
