@@ -1,7 +1,22 @@
 html{margin:0px; height:100%;}
 body {margin:0px;font-family: Arial, Helvetica, sans-serif;}
-#top-bar{margin-top:0px;}
 
+#top-bar{margin-top:0px;width:100%; background-color:grey;height:75px;}
+#top-bar-right{float:right;margin-right:8px;}
+
+#main-left{float:left;width:33.33%;height:300px;background-color:black;display:inline-block;}
+#main-center{margin:auto;width:33.33%;height:300px;background-color:black;display:inline-block;}
+
+#mid-left{float:left;width:33.33%;height:300px;background-color:AntiqueWhite;display:inline-block;}
+#mid-center{margin:auto;width:33.33%;height:300px;background-color:AntiqueWhite;display:inline-block;}
+
+#btm-left{float:left;width:33.33%;height:300px;background-color:brown;display:inline-block;}
+#btm-center{margin:auto;width:33.33%;height:300px;background-color:brown;display:inline-block;}
+#btm-right{float:right;width:33.33%;height:300px;background-color:brown;display:inline-block;}
+/* ///////////// CALENDAR \\\\\\\\\\\\\ */
+#googleCalendar{float:right;width:33.33%;height:600px;background-color:black;display:inline-block;}
+#calendarIframe{display:inline-block;}
+/* ///////////// END CALENDAR \\\\\\\\\\\\\ */
 
 /* ///////////// BUTTONS \\\\\\\\\\\\\ */
 button { background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;cursor: pointer;width: 100%;}
