@@ -1,0 +1,74 @@
+#!/usr/bin/env node
+
+var myApp = require('../app');
+var debugApp = require('debug')('soft355-project:server');
+var http = require('http');
+
+//Set port and store it using Express
+
+var port = normalizePort(process.env.PORT || '9000');
+myApp.set('port', port);
+
+var server = http.createServer(myApp);
+
+//Telling server to listen on specified port, otherwise display error
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+
+//Normalize selected port into a number, a string, or otherwise return false.
+ 
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+// Listen for errors on the server
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // Explain difficult to define errors
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+//Handler to output listening information
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debugApp('Listening on ' + bind);
+}
