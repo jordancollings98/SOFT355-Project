@@ -1,0 +1,16 @@
+extends genericLayout
+html
+block content
+  .container.pageCenter
+    h1.pageTitle Register Here!
+    img.userImage(src="user_image.png" alt="User Image")
+    br
+    form(role='form', class='formCenter', action="/notes", method="post")
+      .form-group
+          input.form-control(type='text', name="title", placeholder='Enter title here...')
+      .form-group
+        textarea.form-control(placeholder="Start typing here..." name="message")
+      button.btn.btn-secondary(type='submit') Submit
+       &nbsp;
+      a(href='/')
+        button.btn.btn-danger#cancel(type="button") Cancel
