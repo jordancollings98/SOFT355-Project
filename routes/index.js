@@ -3,7 +3,7 @@ var expressRouter = express.Router();
 var passport = require('passport');
 var path = require('path');
 var userSchema = require('../models/userSchema');
-
+var noteSchema = require('../models/noteSchema')
 
 /* ROUTER TEST*/
 expressRouter.get('/router-test', function(req, res){
@@ -17,7 +17,7 @@ expressRouter.get('/', function(req, res, next) {
 });
 
 expressRouter.get('/register', function(req, res) {
-    res.render('register', { });
+    res.render('register', {});
 });
 
 expressRouter.post('/register', function(req, res) {
@@ -43,6 +43,21 @@ expressRouter.post('/login', passport.authenticate('local'), function(req, res) 
 expressRouter.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
+});
+
+expressRouter.get('/notes', function(req, res) {
+    res.render('notes', {});
+});
+
+expressRouter.post('/notes', function(req,res){
+var note = new noteSchema.Note({ title : req.body.title, message : req.body.message});
+note.save(function (err,note) {
+	if (err) {
+		return res.render('notes',{noteSchema : noteSchema});
+	};	
+});
+console.log("\x1b[32m","Note with title: " + note.title + " has been saved.");		
+res.redirect('/');
 });
 
 module.exports = expressRouter;
