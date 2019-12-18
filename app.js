@@ -1,13 +1,14 @@
 var express = require('express');
 var mongoose = require('mongoose');
-var passport = require('passport')
-var logger = require('morgan');;
+var passport = require('passport');
+var logger = require('morgan');
 var localStrategy = require('passport-local').Strategy;
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var createError = require('http-errors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+//var notesRouter = require('./routes/notes');
 
 var myApp = express();
 
@@ -29,6 +30,7 @@ myApp.use(express.static(path.join(__dirname, 'public')));
 
 myApp.use('/', indexRouter);
 myApp.use('/users', usersRouter);
+//myApp.use('/notes', notesRouter);
 
 var userSchema = require("./models/userSchema");
 passport.use(new localStrategy(userSchema.authenticate()));
