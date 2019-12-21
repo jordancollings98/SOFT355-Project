@@ -46,18 +46,33 @@ expressRouter.get('/logout', function(req, res) {
 });
 
 expressRouter.get('/notes', function(req, res) {
-    res.render('notes', {});
+  res.render('notes', {});
+});
+
+expressRouter.get('/getNotes', function(req, res) {
+  noteSchema.find({}, function(err, docs){
+    if (!err){
+      console.log(docs);
+    }
+    var noteMap = {};
+
+    docs.forEach(function(note){
+      noteMap[note._id] = note;
+    });
+    res.send(noteMap);
+  });
+    //res.render('notes', {});
 });
 
 expressRouter.post('/notes', function(req,res){
-var note = new noteSchema.Note({ title : req.body.title, message : req.body.message});
+var note = new noteSchema({ title : req.body.title, message : req.body.message});
 note.save(function (err,note) {
 	if (err) {
 		return res.render('notes',{noteSchema : noteSchema});
-	};	
+	};
 });
-console.log("\x1b[32m","Note with title: " + note.title + " has been saved.");		
-res.redirect('/');
+console.log("\x1b[32m","Note with title: " + note.title + " has been saved.");
+res.redirect('/notes');
 });
 
 module.exports = expressRouter;
