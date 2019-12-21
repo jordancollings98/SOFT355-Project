@@ -1,8 +1,7 @@
 extends genericLayout
-html
 block content
   .container.pageCenter
-    h1.pageTitle Register Here!
+    h1.pageTitle Add note here!
     img.userImage(src="user_image.png" alt="User Image")
     br
     form(role='form', class='formCenter', action="/notes", method="post")
@@ -14,3 +13,12 @@ block content
        &nbsp;
       a(href='/')
         button.btn.btn-danger#cancel(type="button") Cancel
+        &nbsp;
+    section.get
+        h3 Get Data
+        a(href='#')
+          button.btn.btn-primary#btnGetData(type='button') Get all notes
+        div#displayData
+          div#rowData
+          div#rowData2    
+                        
