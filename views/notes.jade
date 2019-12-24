@@ -11,7 +11,7 @@ block content
         textarea.form-control(placeholder="Start typing here..." name="message")
       button.btn.btn-secondary(type='submit') Submit
       a(href='/')
-        button.btn.btn-danger#cancel(type="button") Cancel
+        button.btn.btn-danger.btnCancel(type="button") Cancel
     section.get
         h3 Get Data
         a(href='#')
@@ -19,14 +19,25 @@ block content
         div#displayData
           div#rowData3
           div#rowData  
-          div#rowData2                     
+          div#rowData2  
+    h1.pageTitle Update note here!
+        img.noteImage(src="update-note.jpg" alt="Update notes image")                   
     form(role='form', class='formCenter', action="/updateNotes", method="post")
             .form-group
                 input.form-control(type='text', name="id", placeholder='Enter ID here...')
             .form-group
-                input.form-control(type='text', name="title", placeholder='Enter title here...')
+                input.form-control(type='text', name="title", placeholder='Enter updated title here...')
             .form-group
-              textarea.form-control(placeholder="Start typing here..." name="message")
+                textarea.form-control(placeholder="Enter updated message here..." name="message")
             button.btn.btn-secondary#btnUpdateData(type='submit') Update
             a(href='/')
-              button.btn.btn-danger#cancel(type="button") Cancel
+              button.btn.btn-danger.btnCancel(type="button") Cancel
+              hr.divider
+     h1.pageTitle#deleteMargin Delete note here!
+        img.noteImage(src="delete-note.jpg" alt="Delete notes image")
+     form(role='form', class='formCenter', action="/deleteNotes", method="post")
+              .form-group
+                  input.form-control(type='text', name="id", placeholder='Enter ID here...')
+              button.btn.btn-secondary#btnDeleteData(type='submit') Delete
+              a(href='/')
+                button.btn.btn-danger.btnCancel(type="button") Cancel
