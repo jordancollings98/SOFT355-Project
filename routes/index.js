@@ -1,3 +1,4 @@
+var mongoose = require('mongoose');
 var express = require('express');
 var expressRouter = express.Router();
 var passport = require('passport');
@@ -20,13 +21,13 @@ expressRouter.get('/register', function(req, res) {
     res.render('register', {});
 });
 
-expressRouter.post('/register', function(req, res) {
+expressRouter.post('/register', function(req, res) { // POST data from /register page of username and password using passport register
     userSchema.register(new userSchema({ username : req.body.username }), req.body.password, function(err, userSchema) {
         if (err) {
             return res.render('register', { userSchema : userSchema });
         }
 
-        passport.authenticate('local')(req, res, function () {
+        passport.authenticate('local')(req, res, function () { // Authenticate with passport
             res.redirect('/');
         });
     });
@@ -50,29 +51,66 @@ expressRouter.get('/notes', function(req, res) {
 });
 
 expressRouter.get('/getNotes', function(req, res) {
-  noteSchema.find({}, function(err, docs){
-    if (!err){
-      console.log(docs);
-    }
-    var noteMap = {};
+  noteSchema.find({}, function(err, notes){ // Find all notes
 
-    docs.forEach(function(note){
-      noteMap[note._id] = note;
+   var noteMap = {};
+
+	if (err){
+		throw err;
+			console.log("Error while finding notes");// log error to console if found
+	}else if (!err){
+			console.log("Notes Found");
+	}
+
+    notes.forEach(function(note){
+      noteMap[note._id] = note; // Find each note byId and add to the noteMap array
     });
-    res.send(noteMap);
+    res.send(noteMap); //Send all notes after for each function to /getNotes
   });
-    //res.render('notes', {});
 });
 
-expressRouter.post('/notes', function(req,res){
-var note = new noteSchema({ title : req.body.title, message : req.body.message});
-note.save(function (err,note) {
+expressRouter.post('/notes', function(req, res){
+
+var note = new noteSchema({ title : req.body.title, message : req.body.message}); // Create new note based on user input
+
+note.save(function (err,note) { // save note to database
 	if (err) {
-		return res.render('notes',{noteSchema : noteSchema});
+		return res.render('notes',{noteSchema : noteSchema}); // If error occurs render error on page
 	};
 });
-console.log("\x1b[32m","Note with title: " + note.title + " has been saved.");
+console.log("\x1b[32m","Note with title: " + note.title + " has been saved."); // Log newly created note in console
 res.redirect('/notes');
 });
+
+expressRouter.post('/updateNotes', function (req, res){
+  var singleNote = {
+    title: req.body.title,
+    message: req.body.message
+  };
+  var id = req.body.id;
+
+  noteSchema.findByIdAndUpdate(id, {$set: singleNote}, function (err, note){
+    if (err){
+      console.log("Error while updating note" + id);
+    };
+
+    });
+    console.log("\x1b[33m","Note with ID: " + id + " has been updated."); // Log newly created note in console
+    res.redirect('/notes');
+  });
+
+  expressRouter.post('/deleteNotes', function (req, res){
+
+    var id = req.body.id;
+
+    noteSchema.findByIdAndDelete(id, function (err, note){
+      if (err){
+        console.log("Error while deleting note" + id);
+      };
+
+      });
+      console.log("\x1b[31m","Note with ID: " + id + " has been deleted."); // Log newly created note in console
+      res.redirect('/notes');
+    });
 
 module.exports = expressRouter;
