@@ -1,0 +1,50 @@
+{
+  "name": "personal-management-dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard for personal management",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-files": "^1.4.0",
+    "chai-http": "^4.3.0",
+    "chai-jq": "0.0.9",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "jade": "^1.11.0",
+    "jquery": "^3.4.1",
+    "jsdom": "^15.2.1",
+    "jsdom-global": "^3.0.2",
+    "mongodb": "^3.4.0",
+    "mongoose": "^5.8.0",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1",
+    "path": "^0.12.7",
+    "websocket": "^1.0.31"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.2"
+  },
+  "scripts": {
+    "start": "node ./server/webServer",
+    "test": "mocha -u tdd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jordancollings98/SOFT355-Project.git"
+  },
+  "keywords": [
+    "dashboard",
+    "personal",
+    "management"
+  ],
+  "author": "Jordan Collings",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jordancollings98/SOFT355-Project/issues"
+  },
+  "homepage": "https://github.com/jordancollings98/SOFT355-Project#readme"
+}
