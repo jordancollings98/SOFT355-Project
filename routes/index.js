@@ -10,7 +10,7 @@ var noteSchema = require('../models/noteSchema')
 expressRouter.get('/router-test', function(req, res){
     res.status(200).send("Test Message");
 });
-/* ROUTER TEST*/
+/* END ROUTER TEST*/
 
 /* Main GET + Post Requests*/
 expressRouter.get('/', function(req, res, next) {
