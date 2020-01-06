@@ -8,19 +8,18 @@ var cookieParser = require('cookie-parser');
 var createError = require('http-errors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-//var notesRouter = require('./routes/notes');
 
 var myApp = express();
 
 myApp.set('views', path.join(__dirname, 'views'));
-myApp.set('view engine', 'jade');
+myApp.set('view engine', 'jade'); // use jade as view engine
 
 myApp.use(logger('dev'));
 myApp.use(express.json());
 myApp.use(express.urlencoded({ extended: false }));
 myApp.use(cookieParser());
 myApp.use(require('express-session')({
-    secret: 'orange lemon',
+    secret: 'blueberry jam',
     resave: false,
     saveUninitialized: false
 }));
@@ -30,7 +29,6 @@ myApp.use(express.static(path.join(__dirname, 'public')));
 
 myApp.use('/', indexRouter);
 myApp.use('/users', usersRouter);
-//myApp.use('/notes', notesRouter);
 
 var userSchema = require("./models/userSchema");
 passport.use(new localStrategy(userSchema.authenticate()));
@@ -38,7 +36,7 @@ passport.serializeUser(userSchema.serializeUser());
 passport.deserializeUser(userSchema.deserializeUser());
 
 var uri = "mongodb+srv://jcollings2:plymouthuniversity@uni-exercise5-ezjhs.mongodb.net/userDb?retryWrites=true&w=majority";
-mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true,  useFindAndModify: false });
 
 
 myApp.use(function(req, res, next) {     // Catch 404 errors and forward to the error handler
@@ -59,12 +57,12 @@ if (myApp.get('env') === 'development') {    // Errors to development environmen
 
 
 myApp.use(function(err, req, res, next) {     // Error handling function
- 
+
   res.locals.message = err.message;
   res.locals.error = req.myApp.get('env') === 'development' ? err : {};  // Errors to development environment
 
- 
-  res.status(err.status || 500);     
+
+  res.status(err.status || 500);
   res.render('error');         // render 500 error
 });
 
