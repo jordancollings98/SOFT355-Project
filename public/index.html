@@ -1,64 +1,43 @@
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="keywords" content="Management Dashboard, Personal Management, Social Media Management">
-<meta name="description" content="">
-<meta name="author" content="Jordan Collings">
-<link rel="stylesheet" type="text/css" href="./css/main.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <title>Index</title>
+  <!-- Meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Management Dashboard, Personal Management, Social Media Management">
+  <meta name="description" content="Looking for a personal mangement dashboard for creating notes and checking calendar events? Look no further!">
+  <meta name="author" content="Jordan Collings">
+  <!-- END Meta tags -->
+  <link rel="stylesheet" type="text/css" href="./css/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
 <body>
-
-<div id="loginModal" class="modal">
-  <span onclick="document.getElementById('loginModal').style.display='none'""
-class="modalClose" title="Close Modal">&times;</span>
-
-<form class="modal-content zoomAnimation" action="">
-    <div class="containerImg">
-      <img src="user_image.png" alt="User Image class="userImg">
-    </div>
-
-    <div class="contentContainer">
-      <label for="userName"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="userName" required>
-
-      <label for="passWord"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="passWord" required>
-
-      <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="rememberPass"> Remember me
-      </label>
-    </div>
-
-    <div class="contentContainer" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('loginModal').style.display='none'" class="btnCancel">Cancel</button>
-      <span class="passWord">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
+<div id="top-bar">
+  <div id="top-bar-left">
+      <h2>Personal Management Dashboard </h2>
+  </div>
+  <div id="top-bar-right">
+    <form action="/login">
+        <button style="width:auto;" type="submit">Login</button>
+       </form>
+  </div>
 </div>
-
-<div id="top-bar">sdfsdfsdsfdfsd
-<div id="top-bar-right">
-	<button onclick="document.getElementById('loginModal').style.display='block'" style="width:auto;">Login</button></div>
-</div>
-<div id="main-left" class="genericDiv"></div>
-<div id="main-center" class="genericDiv"></div>
 <div id="googleCalendar">
 	<iframe id="calendarIframe" src="https://calendar.google.com/calendar/embed?src=ifailz14%40gmail.com&ctz=Europe%2FLondon" style="border: 0" width="100%" height="100%" frameborder="0" ></iframe>
 </div>
-
-<div id="mid-left" class="genericDiv"></div>
-<div id="mid-center" class="genericDiv"></div>
-
-<div id="btm-left" class="genericDiv"></div>
-<div id="btm-center" class="genericDiv"></div>
-<div id="btm-right" class="genericDiv"></div>
-<footer style="background-color:grey;"> Created by Jordan Collings </footer>
+<div id="btm-left" class="genericDiv">
+  <form action="/register">
+    <h2>Have you created an account? </h2>
+      <img class="userImage" src="user_image.png">
+      <h3 style="margin-bottom:40px;">If not you can register one below!</h3>
+         <button style="width:auto;" type="submit">Register a new account</button>
+      </form>
+</div>
+<div style="text-align:center;overflow:hidden;" id="btm-center" class="genericDiv">
+  <h1 style="margin-bottom:30px;">Make Notes! </h1>
+  <div><img class="imgNote" src="make-a-note.jpg"> </div>
+</div>
 
 <script src="./js/main.js"></script>
 </body>
-
-
 </html>
